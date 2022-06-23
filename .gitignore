@@ -1,0 +1,8 @@
+.vscode
+.cache
+build
+*.json
+*.tar.gz
+*.zip
+doxygen.conf
+!doxygen.conf.in
