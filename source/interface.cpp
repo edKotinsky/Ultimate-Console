@@ -40,8 +40,18 @@ namespace UC
     void addOption(command_t command, Option &option)
     { command->addOption(option); }
 
+    void addOption(command_t command, Option &&option)
+    {
+        command->addOption(option.clone());
+    }
+
     void addArgument(command_t command, Argument &argument)
     { command->addArgument(argument); }
+
+    void addArgument(command_t command, Argument &&argument)
+    {
+        command->addArgument(argument.clone());
+    }
 
     dictionary_state run(dictionary_t& dictionary) 
     {

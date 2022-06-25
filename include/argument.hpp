@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <stdexcept>
 #include <string>
 
@@ -17,6 +18,8 @@ namespace UC
     struct Argument
     {
         virtual ~Argument() = default;
+
+        virtual std::unique_ptr<Argument> clone() const = 0;
 
         /**
             @brief Pure virtual Argument's method
@@ -55,7 +58,12 @@ namespace UC
 
         StringArgument(StringArgument const& other) = default;
 
-        void execute(std::string &&value) override final
+        virtual std::unique_ptr<Argument> clone() const override
+        {
+            return std::make_unique<StringArgument>(*this);
+        }
+
+        void execute(std::string &&value) override
         {
             ref = value;
         }
@@ -89,11 +97,16 @@ namespace UC
 
         IntArgument(IntArgument const& other) = default;
 
+        virtual std::unique_ptr<Argument> clone() const override
+        {
+            return std::make_unique<IntArgument>(*this);
+        }
+
         /**
             @brief execute
         */
 
-        void execute(std::string &&value) override final
+        void execute(std::string &&value) override
         {
             for (auto it : value)
                 if (it < '0' || it > '9')
@@ -136,6 +149,11 @@ namespace UC
 
         BoolArgument(BoolArgument const& other) = default;
 
+        virtual std::unique_ptr<Argument> clone() const override
+        {
+            return std::make_unique<BoolArgument>(*this);
+        }
+
         /**
             @brief execute method
 
@@ -153,7 +171,7 @@ namespace UC
             @param[in] value
         */
 
-        void execute(std::string &&value) override final
+        void execute(std::string &&value) override
         {
             if (value == trueStr) ref = true;
             else if (value == falseStr) ref = false;

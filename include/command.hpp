@@ -1,7 +1,9 @@
 #pragma once
 
+#include <memory>
 #include <stdexcept>
 #include <string>
+#include <utility>
 #include <vector>
 #include <functional>
 
@@ -34,6 +36,11 @@ namespace UC
             argvec.emplace_back(&arg);
         }
 
+        inline void addArgument(std::unique_ptr<Argument> arguptr)
+        {
+            argvec.push_back(std::move(arguptr));
+        }
+
         void addOption(Option &opt)
         {
 
@@ -49,15 +56,20 @@ namespace UC
             optvec.emplace_back(&opt);
         }
 
+        void addOption(std::unique_ptr<Option> optuptr)
+        {
+            optvec.push_back(std::move(optuptr));
+        }
+
         inline const std::string &getName()
         {
             return n;
         }
 
-        const std::vector<Option *>::iterator
+        const std::vector<std::unique_ptr<Option>>::iterator
         findOptionShortName(std::string const &name);
 
-        const std::vector<Option *>::iterator
+        const std::vector<std::unique_ptr<Option>>::iterator
         findOptionLongName(std::string const &name);
 
         void setArgumentValue(std::string &&value);
@@ -67,7 +79,7 @@ namespace UC
             argIt = argvec.begin();
         }
 
-        inline void setOptionValue(std::vector<Option *>::iterator optionIt,
+        inline void setOptionValue(std::vector<std::unique_ptr<Option>>::iterator optionIt,
                             std::string &&value)
         {
             (*optionIt)->execute(std::move(value));
@@ -86,12 +98,12 @@ namespace UC
         std::string n;
         function_t cb;
 
-        std::vector<Argument *> argvec;
-        std::vector<Argument *>::iterator argIt;
+        std::vector<std::unique_ptr<Argument>> argvec;
+        std::vector<std::unique_ptr<Argument>>::iterator argIt;
         size_t argCounter = 0;
 
         std::vector<char> sNameVec;
-        std::vector<Option *> optvec;
+        std::vector<std::unique_ptr<Option>> optvec;
     };
 
 

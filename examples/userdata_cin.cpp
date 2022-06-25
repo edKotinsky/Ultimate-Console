@@ -1,4 +1,7 @@
+#include "argument.hpp"
+#include "callback.hpp"
 #include "interface.hpp"
+#include "option.hpp"
 #include <iostream>
 #include <memory>
 // #include <ucconf.hpp>
@@ -74,23 +77,18 @@ int main(int, char**)
         UC::command_t comd = UC::addCommand(d0, "userdata", 
             UC::callback(ud, &UserData::printUserData));
 
-        UC::StringOption option1("string", 's', ud.strValue);
-        UC::IntOption    option2("int", 'i', ud.intValue);
-        UC::BoolOption   option3("bool", 'b', ud.boolValue);
-        UC::CallbackOption  help("help", 
-            UC::callback(ud, &UserData::help));
-
-        UC::StringArgument arg1(ud.strArg);
-        UC::IntArgument    arg2(ud.intArg);
-
-        UC::addOption(comd, option1);
-        UC::addOption(comd, option2);
-        UC::addOption(comd, option3);
-        UC::addOption(comd, help);
-
-        UC::addArgument(comd, arg1);
-        UC::addArgument(comd, arg2);
+        UC::addOption(comd, 
+            UC::StringOption("string", 's', ud.strValue));
+        UC::addOption(comd,
+            UC::IntOption("int", 'i', ud.intValue));
+        UC::addOption(comd,
+            UC::BoolOption("bool", 'b', ud.boolValue));
+        UC::addOption(comd,
+            UC::CallbackOption("help", 'h', UC::callback(ud, &UserData::help)));
         
+        UC::addArgument(comd, UC::StringArgument(ud.strArg));
+        UC::addArgument(comd, UC::IntArgument(ud.intArg));
+
         UC::run(d0);
     }
     catch (runtime_error &e)

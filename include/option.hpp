@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <string>
 #include <functional>
 
@@ -22,12 +23,12 @@ namespace UC
                bool isValueRequired = true, bool sNameAllowed = true);
 
         Option() = delete;
-        Option(Option &) = delete;
-        Option(Option &&) = delete;
         virtual ~Option() = default;
 
         virtual char getShortName() = 0;
         virtual const std::string &getLongName() = 0;
+
+        virtual std::unique_ptr<Option> clone() const = 0;
 
         virtual void execute(std::string && = "") = 0;
 
@@ -74,6 +75,11 @@ namespace UC
             val = !val;
         }
 
+        virtual std::unique_ptr<Option> clone() const override
+        {
+            return std::make_unique<BoolOption>(*this);
+        }
+
     private:
         bool &val;
     };
@@ -101,6 +107,11 @@ namespace UC
         virtual void execute([[maybe_unused]] std::string &&value) override final
         {
             val = std::move(value);
+        }
+
+        virtual std::unique_ptr<Option> clone() const override
+        {
+            return std::make_unique<StringOption>(*this);
         }
 
     private:
@@ -132,6 +143,11 @@ namespace UC
             val = std::stoi(value, nullptr);
         }
 
+        virtual std::unique_ptr<Option> clone() const override
+        {
+            return std::make_unique<IntOption>(*this);
+        }
+
     private:
         int &val;
     };
@@ -159,6 +175,11 @@ namespace UC
         virtual void execute([[maybe_unused]] std::string &&value) override final
         {
             val();
+        }
+
+        virtual std::unique_ptr<Option> clone() const override
+        {
+            return std::make_unique<CallbackOption>(*this);
         }
 
     private:

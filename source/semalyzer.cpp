@@ -31,7 +31,7 @@ namespace ucsem
 
         auto commandIdx = uclist.end();
         auto variable = varList.end();
-        std::vector<UC::Option*>::iterator option;
+        std::vector<std::unique_ptr<UC::Option>>::iterator option;
 
         while (!exit)
         {

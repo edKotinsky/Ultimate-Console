@@ -1,5 +1,6 @@
 #include "uccmd.hpp"
 #include "ulticon.hpp"
+#include <memory>
 
 namespace UC
 {
@@ -13,11 +14,11 @@ namespace UC
             throw std::logic_error("Option::Option: key is empty");
     }
 
-    const std::vector<Option *>::iterator 
+    const std::vector<std::unique_ptr<Option>>::iterator 
     Command::findOptionShortName(std::string const &name)
     {
         std::vector<char>::iterator it = sNameVec.begin();
-        std::vector<Option *>::iterator optvecit = optvec.begin();
+        std::vector<std::unique_ptr<Option>>::iterator optvecit = optvec.begin();
 
         while (it != sNameVec.end())
         {
@@ -30,10 +31,10 @@ namespace UC
                  name);
     }
 
-    const std::vector<Option *>::iterator 
+    const std::vector<std::unique_ptr<Option>>::iterator 
     Command::findOptionLongName(std::string const &name)
     {
-        std::vector<Option *>::iterator it = optvec.begin();
+        std::vector<std::unique_ptr<Option>>::iterator it = optvec.begin();
 
         while (it != optvec.end())
         {

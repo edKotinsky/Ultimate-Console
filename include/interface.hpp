@@ -99,6 +99,9 @@ namespace UC
     void addVariable(dictionary_t& dictionary, 
                 std::string &&name, Argument &argument);
 
+    void addVariable(dictionary_t& dictionary, 
+                std::string &&name, Argument &&argument);
+
     /**
         @brief addOption adds option to a command
 
@@ -109,7 +112,12 @@ namespace UC
         @param[in] option
     */
     void addOption(command_t command, Option &option);
+
+    void addOption(command_t command, Option &&option);
+
     void addArgument(command_t command, Argument &argument);
+
+    void addArgument(command_t command, Argument &&argument);
 
     dictionary_state run(dictionary_t& dictionary);
 
