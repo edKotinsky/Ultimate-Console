@@ -57,22 +57,3 @@ namespace UC
     }
 
 } // namespace cmd
-
-// I DON'T KNOW WHY IT DOES NOT WORK but linker says:
-// undefined reference to «uccmd::CommandList<UC::Command>::getCommand(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)»
-
-// namespace uccmd
-// {
-//     template <class T>
-//     typename std::vector<std::shared_ptr<T>>::iterator 
-//     CommandList<T>::getCommand(std::string const &name)
-//     {
-//         typename std::vector<std::shared_ptr<T>>::iterator it = commands.begin();
-//         for (; it != commands.end(); ++it)
-//             if ((*it)->getName() == name)
-//                 return it;
-//         throw UC::component_error
-//                 (UC::error_code::cmd_command_does_not_exist, 
-//                  name);
-//     }
-// } // namespace uccmd
