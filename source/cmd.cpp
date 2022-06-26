@@ -14,11 +14,11 @@ namespace UC
             throw std::logic_error("Option::Option: key is empty");
     }
 
-    const std::vector<std::unique_ptr<Option>>::iterator 
+    const std::vector<std::shared_ptr<Option>>::iterator 
     Command::findOptionShortName(std::string const &name)
     {
         std::vector<char>::iterator it = sNameVec.begin();
-        std::vector<std::unique_ptr<Option>>::iterator optvecit = optvec.begin();
+        std::vector<std::shared_ptr<Option>>::iterator optvecit = optvec.begin();
 
         while (it != sNameVec.end())
         {
@@ -31,10 +31,10 @@ namespace UC
                  name);
     }
 
-    const std::vector<std::unique_ptr<Option>>::iterator 
+    const std::vector<std::shared_ptr<Option>>::iterator 
     Command::findOptionLongName(std::string const &name)
     {
-        std::vector<std::unique_ptr<Option>>::iterator it = optvec.begin();
+        std::vector<std::shared_ptr<Option>>::iterator it = optvec.begin();
 
         while (it != optvec.end())
         {

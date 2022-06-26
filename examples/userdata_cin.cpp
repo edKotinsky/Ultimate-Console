@@ -68,15 +68,22 @@ int main(int, char**)
 
     try
     {
+        // first of all create dictionary
         UC::dictionary_t d0 = UC::createDictionary();
+
+        // specify the input; in this example we're gonna get data from standard input
         UC::setInput(d0, cin);
 
+        // enable greeting
         UC::showGreeting(d0, true);
         UC::setGreeting(d0, "Enter the command: ");
 
+        // create the command with name "userdata" and attach it to dictionary
+        // UC::callback allows you to pass class method
         UC::command_t comd = UC::addCommand(d0, "userdata", 
             UC::callback(ud, &UserData::printUserData));
 
+        // adding options
         UC::addOption(comd, 
             UC::StringOption("string", 's', ud.strValue));
         UC::addOption(comd,
@@ -86,9 +93,12 @@ int main(int, char**)
         UC::addOption(comd,
             UC::CallbackOption("help", 'h', UC::callback(ud, &UserData::help)));
         
+        // adding arguments
         UC::addArgument(comd, UC::StringArgument(ud.strArg));
         UC::addArgument(comd, UC::IntArgument(ud.intArg));
 
+        // this is the main function - it gets data from input source, disassemblies it
+        // finds names in lists and executes it
         UC::run(d0);
     }
     catch (runtime_error &e)
@@ -101,6 +111,8 @@ int main(int, char**)
     }
     catch (UC::component_error &e)
     {
+        // UC::component_error provides error messages like pair "error code - word"
+        // it's done so that you can override your own error messages or call standart UC::printError
         UC::printError(e);
     }
 

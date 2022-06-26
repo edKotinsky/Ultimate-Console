@@ -57,7 +57,8 @@ Option and variables are the same. Key is always one letter character. String va
 contain space, if they are enclosed in quotation marks.</p>
 
 <h3>What for is you done it?</h3>
-<p>This is my hobby project, I did it just because I want.</p>
+<p>This is my hobby project, I did it just because I want. I don't suppose that somebody 
+will use this.</p>
 
 <h3>Your English is bad</h3>
 <p>Yes, I know.</p>

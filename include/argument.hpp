@@ -19,7 +19,7 @@ namespace UC
     {
         virtual ~Argument() = default;
 
-        virtual std::unique_ptr<Argument> clone() const = 0;
+        virtual std::shared_ptr<Argument> clone() const = 0;
 
         /**
             @brief Pure virtual Argument's method
@@ -58,9 +58,9 @@ namespace UC
 
         StringArgument(StringArgument const& other) = default;
 
-        virtual std::unique_ptr<Argument> clone() const override
+        virtual std::shared_ptr<Argument> clone() const override
         {
-            return std::make_unique<StringArgument>(*this);
+            return std::make_shared<StringArgument>(*this);
         }
 
         void execute(std::string &&value) override
@@ -97,9 +97,9 @@ namespace UC
 
         IntArgument(IntArgument const& other) = default;
 
-        virtual std::unique_ptr<Argument> clone() const override
+        virtual std::shared_ptr<Argument> clone() const override
         {
-            return std::make_unique<IntArgument>(*this);
+            return std::make_shared<IntArgument>(*this);
         }
 
         /**
@@ -149,9 +149,9 @@ namespace UC
 
         BoolArgument(BoolArgument const& other) = default;
 
-        virtual std::unique_ptr<Argument> clone() const override
+        virtual std::shared_ptr<Argument> clone() const override
         {
-            return std::make_unique<BoolArgument>(*this);
+            return std::make_shared<BoolArgument>(*this);
         }
 
         /**

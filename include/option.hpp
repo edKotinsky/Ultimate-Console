@@ -28,7 +28,7 @@ namespace UC
         virtual char getShortName() = 0;
         virtual const std::string &getLongName() = 0;
 
-        virtual std::unique_ptr<Option> clone() const = 0;
+        virtual std::shared_ptr<Option> clone() const = 0;
 
         virtual void execute(std::string && = "") = 0;
 
@@ -75,9 +75,9 @@ namespace UC
             val = !val;
         }
 
-        virtual std::unique_ptr<Option> clone() const override
+        virtual std::shared_ptr<Option> clone() const override
         {
-            return std::make_unique<BoolOption>(*this);
+            return std::make_shared<BoolOption>(*this);
         }
 
     private:
@@ -109,9 +109,9 @@ namespace UC
             val = std::move(value);
         }
 
-        virtual std::unique_ptr<Option> clone() const override
+        virtual std::shared_ptr<Option> clone() const override
         {
-            return std::make_unique<StringOption>(*this);
+            return std::make_shared<StringOption>(*this);
         }
 
     private:
@@ -143,9 +143,9 @@ namespace UC
             val = std::stoi(value, nullptr);
         }
 
-        virtual std::unique_ptr<Option> clone() const override
+        virtual std::shared_ptr<Option> clone() const override
         {
-            return std::make_unique<IntOption>(*this);
+            return std::make_shared<IntOption>(*this);
         }
 
     private:
@@ -177,9 +177,9 @@ namespace UC
             val();
         }
 
-        virtual std::unique_ptr<Option> clone() const override
+        virtual std::shared_ptr<Option> clone() const override
         {
-            return std::make_unique<CallbackOption>(*this);
+            return std::make_shared<CallbackOption>(*this);
         }
 
     private:

@@ -4,6 +4,7 @@
 #include <ucconf.hpp>
 #include "dictionary.hpp"
 #include "interface.hpp"
+#include "variable.hpp"
 
 namespace UC
 {
@@ -30,6 +31,12 @@ namespace UC
         dictionary->addVariable(tmp); 
     }
 
+    void addVariable(dictionary_t& dictionary, std::string &&name, Argument &&argument)
+    {
+        std::shared_ptr<Variable> tmp = std::make_shared<Variable>(name, argument);
+        dictionary->addVariable(tmp);
+    }
+
     std::shared_ptr<Command> addCommand(dictionary_t& dictionary, std::string &&name, std::function<void()> callback)
     { 
         std::shared_ptr<Command> tmp = std::make_shared<Command>(name, callback);
@@ -38,7 +45,7 @@ namespace UC
     }
 
     void addOption(command_t command, Option &option)
-    { command->addOption(option); }
+    { command->addOption(option.clone()); }
 
     void addOption(command_t command, Option &&option)
     {
@@ -46,7 +53,7 @@ namespace UC
     }
 
     void addArgument(command_t command, Argument &argument)
-    { command->addArgument(argument); }
+    { command->addArgument(argument.clone()); }
 
     void addArgument(command_t command, Argument &&argument)
     {

@@ -7,6 +7,7 @@
 
 #include <ulticon.hpp>
 
+// example class
 struct ConsoleArgs
 {
     void print()
@@ -31,21 +32,25 @@ int main(int argc, char** argv)
     std::cout << std::endl;
 
     try {
+        // first of all create dictionary
         UC::dictionary_t dict = UC::createDictionary();
+
+        // specify the input; in this example we're gonna get data from console args
         UC::setInput(dict, argc, argv);
 
+        // create the command with name "userdata" and attach it to dictionary
+        // UC::callback allows you to pass class method
         UC::command_t consoleArgs = UC::addCommand(dict, 
             "command", 
             UC::callback(conArgs, &ConsoleArgs::print));
 
-        UC::StringOption opt1("value1", conArgs.val1);
-        UC::IntOption opt2("value2", conArgs.val2);
-        UC::BoolOption opt3("value3", conArgs.val3);
+        // adding options
+        UC::addOption(consoleArgs, UC::StringOption("value1", conArgs.val1));
+        UC::addOption(consoleArgs, UC::IntOption("value2", conArgs.val2));
+        UC::addOption(consoleArgs, UC::BoolOption("value3", conArgs.val3));
 
-        UC::addOption(consoleArgs, opt1);
-        UC::addOption(consoleArgs, opt2);
-        UC::addOption(consoleArgs, opt3);
-
+        // this is the main function - it gets data from input source, disassemblies it
+        // finds names in lists and executes it
         UC::run(dict);
 
     } catch (UC::component_error const& e) {

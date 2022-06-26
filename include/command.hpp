@@ -36,7 +36,7 @@ namespace UC
             argvec.emplace_back(&arg);
         }
 
-        inline void addArgument(std::unique_ptr<Argument> arguptr)
+        inline void addArgument(std::shared_ptr<Argument> arguptr)
         {
             argvec.push_back(std::move(arguptr));
         }
@@ -56,7 +56,7 @@ namespace UC
             optvec.emplace_back(&opt);
         }
 
-        void addOption(std::unique_ptr<Option> optuptr)
+        void addOption(std::shared_ptr<Option> optuptr)
         {
             optvec.push_back(std::move(optuptr));
         }
@@ -66,10 +66,10 @@ namespace UC
             return n;
         }
 
-        const std::vector<std::unique_ptr<Option>>::iterator
+        const std::vector<std::shared_ptr<Option>>::iterator
         findOptionShortName(std::string const &name);
 
-        const std::vector<std::unique_ptr<Option>>::iterator
+        const std::vector<std::shared_ptr<Option>>::iterator
         findOptionLongName(std::string const &name);
 
         void setArgumentValue(std::string &&value);
@@ -79,7 +79,7 @@ namespace UC
             argIt = argvec.begin();
         }
 
-        inline void setOptionValue(std::vector<std::unique_ptr<Option>>::iterator optionIt,
+        inline void setOptionValue(std::vector<std::shared_ptr<Option>>::iterator optionIt,
                             std::string &&value)
         {
             (*optionIt)->execute(std::move(value));
@@ -98,12 +98,12 @@ namespace UC
         std::string n;
         function_t cb;
 
-        std::vector<std::unique_ptr<Argument>> argvec;
-        std::vector<std::unique_ptr<Argument>>::iterator argIt;
+        std::vector<std::shared_ptr<Argument>> argvec;
+        std::vector<std::shared_ptr<Argument>>::iterator argIt;
         size_t argCounter = 0;
 
         std::vector<char> sNameVec;
-        std::vector<std::unique_ptr<Option>> optvec;
+        std::vector<std::shared_ptr<Option>> optvec;
     };
 
 

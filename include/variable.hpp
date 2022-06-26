@@ -1,6 +1,7 @@
 #pragma once
 
 #include "argument.hpp"
+#include <memory>
 
 namespace UC
 {
@@ -8,7 +9,10 @@ namespace UC
     {
     public:
         Variable(std::string name, Argument& value)
-            : n(name), val(value) {}
+            : n(name), val(value.clone()) {}
+
+        Variable(std::string name, Argument&& value)
+            : n(name), val(value.clone()) {}
 
         Variable() = delete;
         Variable(const Variable&) = delete;
@@ -18,10 +22,10 @@ namespace UC
         { return n; }
 
         inline void execute (std::string &&value) const
-        { val.execute(std::move(value)); }
+        { val->execute(std::move(value)); }
 
     private:
         std::string n;
-        Argument& val;
+        std::shared_ptr<Argument> val;
     };
 }

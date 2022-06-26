@@ -102,6 +102,7 @@ namespace UC
     void addVariable(dictionary_t& dictionary, 
                 std::string &&name, Argument &&argument);
 
+
     /**
         @brief addOption adds option to a command
 
@@ -113,6 +114,16 @@ namespace UC
     */
     void addOption(command_t command, Option &option);
 
+    /**
+        @brief addOption adds option to a command
+
+        Option is a class, which contain the name string and a reference to
+        a value; when executes, it changes this value
+        Gets an rvalue reference
+
+        @param[in,out] command
+        @param[in] option
+    */
     void addOption(command_t command, Option &&option);
 
     void addArgument(command_t command, Argument &argument);
