@@ -4,6 +4,8 @@
 
 namespace UC
 {
+    using error_t = int;
+    
     enum error_code
     {
         lexer_incorrect_key = -1,
