@@ -35,8 +35,8 @@ Or with option short name: `-o value`
 
 Argument, as said below, does not have any name. But it located in certain order. 
 This means, if in the list an argument with int type of reference are located before 
-an argument with string type of reference, this notation are valid: 123 abc, and this 
-are not: abc 123.
+an argument with string type of reference, this notation is valid: 123 abc, and this 
+is not: abc 123.
 
 So the command syntax is: `command [--option[=value]] [-key [value]] [argument];`.  
 In square brackets are located optional parts. Arguments can be located in any place 
