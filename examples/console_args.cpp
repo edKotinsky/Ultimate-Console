@@ -18,11 +18,13 @@ struct ConsoleArgs
         std::cout << "int = " << intopt << std::endl;
         std::cout << std::boolalpha;
         std::cout << "bool = " << boolopt << std::endl;
+        std::cout << "bool = " << boola << std::endl;
     }
 
     std::string stropt;
     int intopt = 0;
     bool boolopt = false;
+    bool boola = false;
 };
 
 int main(int argc, char** argv)
@@ -50,6 +52,7 @@ int main(int argc, char** argv)
         UC::addOption(consoleArgs, UC::StringOption("string", conArgs.stropt));
         UC::addOption(consoleArgs, UC::IntOption("int", conArgs.intopt));
         UC::addOption(consoleArgs, UC::BoolOption("bool", conArgs.boolopt));
+        UC::addOption(consoleArgs, UC::BoolalphaOption("boolalpha", conArgs.boola));
 
         // this is the main function - it gets data from input source, disassemblies it
         // finds names in lists and executes it
