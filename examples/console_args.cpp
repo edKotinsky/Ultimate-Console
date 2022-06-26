@@ -2,6 +2,7 @@
 #include "interface.hpp"
 #include "option.hpp"
 #include "ucerr.hpp"
+#include <ios>
 #include <iostream>
 #include <string>
 
@@ -13,14 +14,15 @@ struct ConsoleArgs
     void print()
     {
         std::cout << "ConsoleArgs" << std::endl;
-        std::cout << "val1 = " << val1 << std::endl;
-        std::cout << "val2 = " << val2 << std::endl;
-        std::cout << "val3 = " << val3 << std::endl;
+        std::cout << "string = " << stropt << std::endl;
+        std::cout << "int = " << intopt << std::endl;
+        std::cout << std::boolalpha;
+        std::cout << "bool = " << boolopt << std::endl;
     }
 
-    std::string val1;
-    int val2 = 0;
-    bool val3 = false;
+    std::string stropt;
+    int intopt = 0;
+    bool boolopt = false;
 };
 
 int main(int argc, char** argv)
@@ -45,9 +47,9 @@ int main(int argc, char** argv)
             UC::callback(conArgs, &ConsoleArgs::print));
 
         // adding options
-        UC::addOption(consoleArgs, UC::StringOption("value1", conArgs.val1));
-        UC::addOption(consoleArgs, UC::IntOption("value2", conArgs.val2));
-        UC::addOption(consoleArgs, UC::BoolOption("value3", conArgs.val3));
+        UC::addOption(consoleArgs, UC::StringOption("string", conArgs.stropt));
+        UC::addOption(consoleArgs, UC::IntOption("int", conArgs.intopt));
+        UC::addOption(consoleArgs, UC::BoolOption("bool", conArgs.boolopt));
 
         // this is the main function - it gets data from input source, disassemblies it
         // finds names in lists and executes it
