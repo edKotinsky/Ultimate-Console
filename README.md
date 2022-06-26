@@ -13,7 +13,7 @@ The commands are the lists of options and arguments, they also have names
 and the callback functions. Options in fact are the wrapper for references to 
 variables, which provide interface for its changing. They have long string 
 names and short one character names - keys. Arguments are also wrapper for 
-references, but they have not names. Instead this they are stored in a command 
+references, but they have not names. Instead of this they are stored in a command 
 in certain order.
 
 As commands are lists of options and arguments, they must be passed before them. 
@@ -51,7 +51,7 @@ In the end about valid characters. Command names can consists of a-z, A-Z and a 
 Option and variables are the same. Key is always one letter character. String values can 
 contain space, if they are enclosed in quotation marks.
 
-### What for is you done it?
+### What did you do it for?
 
 This is my hobby project, I did it just because I want. I don't suppose that somebody 
 will use this.

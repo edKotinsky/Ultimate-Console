@@ -27,8 +27,7 @@ namespace UC
             it++;    
         }
         throw UC::component_error
-                (UC::error_code::cmd_key_does_not_exist, 
-                 name);
+                (UC::error_code::cmd_key_does_not_exist, name);
     }
 
     const std::vector<std::shared_ptr<Option>>::iterator 
@@ -43,8 +42,7 @@ namespace UC
             it++;
         }
         throw UC::component_error
-                (UC::error_code::cmd_option_does_not_exist, 
-                 name);
+                (UC::error_code::cmd_option_does_not_exist, name);
     }
 
     void Command::setArgumentValue(std::string &&value)

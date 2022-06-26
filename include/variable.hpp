@@ -5,6 +5,13 @@
 
 namespace UC
 {
+    /**
+        @brief Variable class
+
+        Variable contains a value, wrapped into an Argument's child
+        class. Variable does not require any commands before it.
+        Syntax of a variable is: variable-name = value
+    */
     class Variable
     {
     public:
