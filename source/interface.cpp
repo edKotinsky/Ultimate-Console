@@ -25,19 +25,23 @@ namespace UC
     void setGreeting(dictionary_t& dictionary, std::string greeting)
     { dictionary->addGreeting(greeting); } 
 
-    void addVariable(dictionary_t& dictionary, std::string &&name, Argument &argument)
+    void 
+    addVariable(dictionary_t& dictionary, std::string &&name, Argument &argument)
     { 
         std::shared_ptr<Variable> tmp = std::make_shared<Variable>(name, argument);
         dictionary->addVariable(tmp); 
     }
 
-    void addVariable(dictionary_t& dictionary, std::string &&name, Argument &&argument)
+    void 
+    addVariable(dictionary_t& dictionary, std::string &&name, Argument &&argument)
     {
         std::shared_ptr<Variable> tmp = std::make_shared<Variable>(name, argument);
         dictionary->addVariable(tmp);
     }
 
-    std::shared_ptr<Command> addCommand(dictionary_t& dictionary, std::string &&name, std::function<void()> callback)
+    std::shared_ptr<Command> 
+    addCommand(dictionary_t& dictionary, std::string &&name, 
+        std::function<void()> callback)
     { 
         std::shared_ptr<Command> tmp = std::make_shared<Command>(name, callback);
         dictionary->addCommand(tmp);

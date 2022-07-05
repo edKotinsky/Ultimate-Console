@@ -17,7 +17,7 @@ namespace UC
     /**
         @brief createDictionary is a function which returns dictionary_t
 
-        dictionary is an important class, which contains commands and variables
+        Dictionary is a list of commands and variables.
 
         @return dictionary_t
     */
