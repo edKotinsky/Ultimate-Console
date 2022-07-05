@@ -16,20 +16,25 @@ namespace UC
                         throw std::logic_error("No input given");
 
                     if (greetEnable) std::cout << grtng;
-                    std::vector<std::string> lexems = uclex::parse(*input.get());
+                    std::list<std::string> lexems = uclex::parse(*input.get());
 
                     #ifdef UC_DEBUG
-                        for (size_t i = 0; i < lexems.size(); ++i)
-                            std::cerr << "debug: lexems[" << i << "]: " << lexems[i] << std::endl;
+                        size_t i = 0;
+                        for (auto it : lexems)
+                        {
+                            std::cerr << "debug: lexems[" << i++ << "]: " << it << std::endl;
+                        }
+                            
                     #endif
 
-                    std::vector<ucsyn::Token> tokens = ucsyn::tokenize(lexems);
+                    std::list<ucsyn::Token> tokens = ucsyn::tokenize(lexems);
 
                     #ifdef UC_DEBUG
-                        for (size_t i = 0; i < tokens.size(); ++i)
+                        i = 0;
+                        for (auto it : tokens)
                         {
                             std::cerr << "debug: tokens[" << i << "]: ";
-                            switch (tokens[i].action)
+                            switch (it.action)
                             {
                             case ucsyn::action::argument:
                                 std::cerr << "<argument>   ";
@@ -59,7 +64,7 @@ namespace UC
                                 std::cerr << "<option>     ";
                                 break;
                             }
-                            std::cerr << tokens[i].lexem << std:: endl;
+                            std::cerr << it.lexem << std:: endl;
                         }
                     #endif
 

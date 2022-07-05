@@ -1,5 +1,7 @@
 #include "uccmd.hpp"
 #include "ulticon.hpp"
+#include "ucconf.hpp"
+#include <ios>
 #include <memory>
 
 namespace UC
@@ -22,6 +24,13 @@ namespace UC
 
         while (it != sNameVec.end())
         {
+            #ifdef UC_DEBUG
+                std::cout << "debug: findOptionShortName:name: " 
+                    << name << std::endl;
+                std::cout << "debug: findOptionShortName:it:   " 
+                    << *it << std::endl;
+            #endif
+
             if (*it == name[0]) return optvecit;
             optvecit++;
             it++;    

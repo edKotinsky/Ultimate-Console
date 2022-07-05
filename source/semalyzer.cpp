@@ -1,3 +1,4 @@
+#include <list>
 #include <optional>
 #include <pthread.h>
 #include <stdexcept>
@@ -15,13 +16,15 @@
 
 namespace ucsem
 {
-    size_t ignoreNoAct(std::vector<ucsyn::Token> &tokenVector, size_t tokenIdx);
+    void
+    ignoreNoAct(std::list<ucsyn::Token> &tokenVector, 
+        std::list<ucsyn::Token>::iterator &tokenIdx);
 
-    void execute(std::vector<ucsyn::Token> &tokens, 
+    void execute(std::list<ucsyn::Token> &tokens, 
                  uccmd::CommandList<UC::Command> &uclist, 
                  uccmd::CommandList<UC::Variable> &varList)
     {
-        size_t tokenIt = 0;
+        std::list<ucsyn::Token>::iterator tokenIt = tokens.begin();
         ucsyn::Token tok;
         size_t event = 0;
         state st = state::initial;
@@ -35,8 +38,8 @@ namespace ucsem
 
         while (!exit)
         {
-            tokenIt = ignoreNoAct(tokens, tokenIt);
-            tok = std::move(tokens.at(tokenIt));
+            ignoreNoAct(tokens, tokenIt);
+            tok = std::move(*tokenIt);
 
             event = static_cast<size_t>(tok.action);
             prevst = st;
@@ -75,7 +78,7 @@ namespace ucsem
                     break;
                 }
 
-                tok = std::move(tokens.at(++tokenIt));
+                tok = std::move(*(++tokenIt));
 
                 if (!(tok.action == ucsyn::action::assign_value))
                     throw UC::component_error
@@ -96,19 +99,19 @@ namespace ucsem
                     break;
                 }
 
-                size_t argFindIt = tokenIt;
-                while (tokens.at(argFindIt).action != ucsyn::action::argument)
+                std::list<ucsyn::Token>::iterator argFindIt = tokenIt;
+                while (argFindIt->action != ucsyn::action::argument)
                 {
                     argFindIt++;
-                    if (argFindIt == tokens.size() ||
-                        tokens.at(argFindIt).action == ucsyn::action::option ||
-                        tokens.at(argFindIt).action == ucsyn::action::EOL)
+                    if (argFindIt == tokens.end() ||
+                        argFindIt->action == ucsyn::action::option ||
+                        argFindIt->action == ucsyn::action::EOL)
                         throw UC::component_error
                             (UC::error_code::sem_argument_required);
                 }
 
-                tok = std::move(tokens[argFindIt]);
-                tokens[argFindIt].action = ucsyn::action::no_act;
+                tok = std::move(*argFindIt);
+                argFindIt->action = ucsyn::action::no_act;
 
                 (*option)->execute(std::move(tok.lexem));
                 break;
@@ -148,13 +151,15 @@ namespace ucsem
         }
     }
 
-    size_t ignoreNoAct(std::vector<ucsyn::Token> &tokenVector, size_t tokenIdx)
+    void
+    ignoreNoAct(std::list<ucsyn::Token> &tokList, 
+        std::list<ucsyn::Token>::iterator& tokenIdx)
     {
-        if (tokenVector.at(tokenIdx).action != ucsyn::action::no_act) 
-            return tokenIdx;
-        if (tokenIdx == tokenVector.size()) 
+        if (tokenIdx->action != ucsyn::action::no_act) 
+            return;
+        if (tokenIdx == tokList.end()) 
             throw std::logic_error("sem::execute: missing EOL");
-        return ignoreNoAct(tokenVector, ++tokenIdx);
+        ignoreNoAct(tokList, ++tokenIdx);
     }
 
 } // namespace sem

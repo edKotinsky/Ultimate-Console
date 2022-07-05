@@ -7,7 +7,7 @@
 #include <vector>
 #include <functional>
 
-#include <ucconf.hpp>
+#include "ucconf.hpp"
 #include "argument.hpp"
 #include "option.hpp"
 
@@ -30,7 +30,7 @@ namespace UC
         inline void addArgument(Argument &arg)
         {
             #ifdef UC_DEBUG
-                std::cerr << "debug: command.addArgument" << std::endl;
+                std::cerr << "debug: command:addArgument(Argument&)" << std::endl;
             #endif
 
             argvec.emplace_back(&arg);
@@ -45,9 +45,9 @@ namespace UC
         {
 
             #ifdef UC_DEBUG
-                    std::cerr << "debug: command.addOption: "
-                  << opt.getLongName() << " : "
-                  << opt.getShortName() << std::endl;
+                std::cerr << "debug: command:addOption(Option&): "
+                    << opt.getLongName() << " : "
+                    << opt.getShortName() << std::endl;
             #endif
 
             char sname = opt.getShortName();
@@ -58,6 +58,15 @@ namespace UC
 
         void addOption(std::shared_ptr<Option> optuptr)
         {
+            #ifdef UC_DEBUG
+                std::cerr << 
+                    "debug: command:addOption(std::shared_ptr<Option>): "
+                    << optuptr->getLongName() << " : "
+                    << optuptr->getShortName() << std::endl;
+            #endif
+            char sname = optuptr->getShortName();
+            if (sname)
+                sNameVec.push_back(sname);
             optvec.push_back(std::move(optuptr));
         }
 

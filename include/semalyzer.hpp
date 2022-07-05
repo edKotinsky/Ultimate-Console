@@ -43,7 +43,7 @@ namespace ucsem
         cmd, var
     };
 
-    void execute(std::vector<ucsyn::Token> &tokens, 
+    void execute(std::list<ucsyn::Token> &tokens, 
         uccmd::CommandList<UC::Command> &cmdlist, 
         uccmd::CommandList<UC::Variable> &varList);
 } // namespace sem

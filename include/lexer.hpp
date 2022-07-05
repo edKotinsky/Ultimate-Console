@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
+#include <list>
 
 #include <ucconf.hpp>
 
@@ -48,7 +48,7 @@ namespace uclex
 
     inline state getState(state st, event ev);
     event charType(char ch);
-    std::vector<std::string> parse(UC::input_data &iStr);
+    std::list<std::string> parse(UC::input_data &iStr);
 
     enum class name_type
     {

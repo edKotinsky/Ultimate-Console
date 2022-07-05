@@ -1,6 +1,6 @@
 #pragma once
 
-#include <vector>
+#include <list>
 #include <string>
 
 // FNV1-a hash, 32 bit
@@ -75,6 +75,6 @@ namespace ucsyn
     };
 
     event eventKind(std::string const &lexem);
-    void disassembly_key_sequence(std::string &&lexem, std::vector<Token> &tokenVector);
-    std::vector<Token> tokenize(std::vector<std::string> &lexems);
+    void disassembly_key_sequence(std::string &&lexem, std::list<Token> &tokenVector);
+    std::list<Token> tokenize(std::list<std::string> &lexems);
 } // namespace syn

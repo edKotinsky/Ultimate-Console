@@ -4,7 +4,6 @@
 #include "variable.hpp"
 #include "ucerr.hpp"
 
-
 #include <memory>
 
 namespace uccmd

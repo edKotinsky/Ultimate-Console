@@ -4,11 +4,11 @@
 
 namespace ucsyn
 {
-    std::vector<Token> tokenize(std::vector<std::string> &lexems)
+    std::list<Token> tokenize(std::list<std::string> &lexems)
     {
         state st = state::initial;
         event ev = event::ddash;
-        std::vector<Token> tokens;
+        std::list<Token> tokens;
         std::string lexem;
         auto it = lexems.begin();
         bool exit = false;
@@ -89,10 +89,10 @@ namespace ucsyn
         return tokens;
     }
 
-    void disassembly_key_sequence(std::string &&lexem, std::vector<Token> &tokenVector)
+    void disassembly_key_sequence(std::string &&lexem, std::list<Token> &tokList)
     {
         for (auto it : lexem)
-            tokenVector.emplace_back(action::key, std::string(1, it));  
+            tokList.emplace_back(action::key, std::string(1, it));  
     }
 
     event eventKind(std::string const &lexem)

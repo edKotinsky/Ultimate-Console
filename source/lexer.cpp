@@ -20,7 +20,7 @@ namespace uclex
         return name_type::other;
     }
 
-    std::vector<std::string> parse(UC::input_data &iStr)
+    std::list<std::string> parse(UC::input_data &iStr)
     {
         state st = state::initial;
         state prevst = state::initial;
@@ -28,7 +28,7 @@ namespace uclex
         char ch;
         bool exit = false;
         std::string lexem;
-        std::vector<std::string> lexemVec;
+        std::list<std::string> lexList;
         error_t error = 0;
 
         while (!exit)
@@ -51,12 +51,12 @@ namespace uclex
 
             case state::read_key_sequence:
                 if (prevst == state::read_single_dash)
-                    lexemVec.push_back(std::move(lexem));
+                    lexList.push_back(std::move(lexem));
                 [[fallthrough]];
 
             case state::read_option_name:
                 if (prevst == state::read_double_dash)
-                    lexemVec.push_back(std::move(lexem));
+                    lexList.push_back(std::move(lexem));
                 [[fallthrough]];
 
             case state::read_single_dash:
@@ -79,18 +79,18 @@ namespace uclex
                 {
                     if (ev == event::eol)
                     {
-                        lexemVec.emplace_back("EOL");
+                        lexList.emplace_back("EOL");
                         exit = true;
                     }
                     lexem.push_back(ch);
                     if (ev == event::equal)
-                        lexemVec.push_back(std::move(lexem));
+                        lexList.push_back(std::move(lexem));
                 }
                 else
                 {
                     if (ch != '\"')
                         iStr.putback(ch);
-                    lexemVec.push_back(std::move(lexem));
+                    lexList.push_back(std::move(lexem));
                 }
                 st = state::initial;
                 break;
@@ -112,8 +112,8 @@ namespace uclex
             }
 
 #ifdef LEX_DEBUG
-            if (!lexemVec.empty() && st != prevst)
-                std::cerr << "vector element=" << lexemVec.back() << std::endl;
+            if (!lexList.empty() && st != prevst)
+                std::cerr << "vector element=" << lexList.back() << std::endl;
 #endif
 
             if (error != 0)
@@ -125,14 +125,14 @@ namespace uclex
                     if (charType(ch) == event::eol || charType(ch) == event::space)
                         break;
                 }
-                if (!lexemVec.empty())
-                    if (lexemVec.back() == "-" || lexemVec.back() == "--")
-                        throw UC::component_error(error, lexemVec.back() + lexem);
+                if (!lexList.empty())
+                    if (lexList.back() == "-" || lexList.back() == "--")
+                        throw UC::component_error(error, lexList.back() + lexem);
                 throw UC::component_error(error, std::move(lexem));
             }
         }
 
-        return lexemVec;
+        return lexList;
     }
 
     inline state getState(state st, event ev)
