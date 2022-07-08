@@ -105,29 +105,35 @@ namespace UC
     struct BoolOption : Option
     {
         BoolOption(std::string longName, char shortName, bool &refToValue)
-            : Option(longName, shortName, asgnmt_is_no_req), val(refToValue) {}
+            : Option(longName, shortName, asgnmt_is_no_req), 
+                val(refToValue) {}
 
         BoolOption(std::string longName, bool &refToValue)
-            : Option(longName, '\0', no_short_name, asgnmt_is_no_req), val(refToValue) {}
+            : Option(longName, '\0', no_short_name, 
+                asgnmt_is_no_req), val(refToValue) {}
 
         ~BoolOption() = default;
 
-        virtual char getShortName() override final
+        virtual char 
+        getShortName() override final
         {
             return sName;
         }
 
-        virtual const std::string &getLongName() override final
+        virtual const std::string 
+        &getLongName() override final
         {
             return lName;
         }
 
-        virtual void execute([[maybe_unused]] std::string &&value) override final
+        virtual void 
+        execute([[maybe_unused]] std::string &&value) override final
         {
             val = !val;
         }
 
-        virtual std::shared_ptr<Option> clone() const override
+        virtual std::shared_ptr<Option> 
+        clone() const override
         {
             return std::make_shared<BoolOption>(*this);
         }
@@ -145,30 +151,36 @@ namespace UC
     */
     struct StringOption : Option
     {
-        StringOption(std::string longName, char shortName, std::string &refToValue)
+        StringOption(std::string longName, char shortName, 
+                    std::string &refToValue)
             : Option(longName, shortName, true), val(refToValue) {}
 
         StringOption(std::string longName, std::string &refToValue)
-            : Option(longName, '\0', true, no_short_name), val(refToValue) {}
+            : Option(longName, '\0', true, no_short_name), 
+                val(refToValue) {}
 
         ~StringOption() = default;
 
-        virtual char getShortName() override final
+        virtual char 
+        getShortName() override final
         {
             return sName;
         }
 
-        virtual const std::string &getLongName() override final
+        virtual const std::string 
+        &getLongName() override final
         {
             return lName;
         }
 
-        virtual void execute([[maybe_unused]] std::string &&value) override final
+        virtual void 
+        execute([[maybe_unused]] std::string &&value) override final
         {
             val = std::move(value);
         }
 
-        virtual std::shared_ptr<Option> clone() const override
+        virtual std::shared_ptr<Option> 
+        clone() const override
         {
             return std::make_shared<StringOption>(*this);
         }
@@ -313,5 +325,4 @@ namespace UC
         std::string trueStr;
         std::string falseStr;
     };
-
 } // namespace cmd
