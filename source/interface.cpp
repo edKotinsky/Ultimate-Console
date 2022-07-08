@@ -19,12 +19,6 @@ namespace UC
     void setInput(dictionary_t& dictionary, int argCount, char **args)
     { dictionary->setInput(std::make_unique<input_data>(args, argCount)); }
 
-    void showGreeting(dictionary_t& dictionary, bool enable)
-    { dictionary->greeting(enable); }
-
-    void setGreeting(dictionary_t& dictionary, std::string greeting)
-    { dictionary->addGreeting(greeting); } 
-
     void 
     addVariable(dictionary_t& dictionary, std::string &&name, Argument &argument)
     { 

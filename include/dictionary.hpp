@@ -39,15 +39,6 @@ namespace UC
         inline void addVariable(std::shared_ptr<Variable> &variable)
         { vars.addCommand(variable); }
 
-        inline void addGreeting(std::string &&str)
-        { grtng = str; }
-
-        inline void addGreeting(std::string const& str)
-        { grtng = str; }
-
-        inline void greeting(bool enable)
-        { greetEnable = enable; }
-
         inline void run()
         { _run(); }
 
@@ -64,7 +55,6 @@ namespace UC
         void _run();
 
         std::unique_ptr<input_data> input;
-        bool greetEnable = false;
         std::string grtng;
         dictionary_state st = dictionary_state::stopped;
         uccmd::CommandList<Command> cmds;

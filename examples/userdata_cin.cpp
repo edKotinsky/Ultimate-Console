@@ -74,10 +74,6 @@ int main(int, char**)
         // specify the input; in this example we're gonna get data from standard input
         UC::setInput(d0, cin);
 
-        // enable greeting
-        UC::showGreeting(d0, true);
-        UC::setGreeting(d0, "Enter the command: ");
-
         // create the command with name "userdata" and attach it to dictionary
         // UC::callback allows you to pass class method
         UC::command_t comd = UC::addCommand(d0, "userdata", 

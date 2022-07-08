@@ -45,31 +45,6 @@ namespace UC
     void setInput(dictionary_t& dictionary, int argCount, char **args);
 
     /**
-        @brief showGreeting specifies dictionary to print greeting string
-
-        Greeting string is like shell greeting. User can enable greeting
-        printing or disable. Greeting is disabled by default. If user
-        enables greeting, he must specify the greeting string by
-        setGreeting function
-
-        @param[in,out] dictionary
-        @param[in] enable
-    */
-    void showGreeting(dictionary_t& dictionary, bool enable);
-
-    /**
-        @brief setGreeting specifies the greeting string
-
-        Greeting string prints when the code waits user input. If user 
-        enables greeting printing by showGreeting, he must specify the
-        greeting string by setGreeting
-
-        @param[in,out] dictionary
-        @param[in] greeting
-    */
-    void setGreeting(dictionary_t& dictionary, std::string greeting);
-
-    /**
         @brief addCommand adds command to dictionary
 
         Command is a class, which contain the name, callback function,

@@ -15,7 +15,6 @@ namespace UC
                     if (input == nullptr)
                         throw std::logic_error("No input given");
 
-                    if (greetEnable) std::cout << grtng;
                     std::list<std::string> lexems = uclex::parse(*input.get());
 
                     #ifdef UC_DEBUG
