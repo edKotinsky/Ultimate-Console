@@ -1,12 +1,15 @@
-#include "argument.hpp"
-#include "callback.hpp"
-#include "interface.hpp"
-#include "option.hpp"
 #include <iostream>
 #include <memory>
-// #include <ucconf.hpp>
 
 #include <ulticon.hpp>
+
+#include <ulticon/stringoption.hpp>
+#include <ulticon/booloption.hpp>
+#include <ulticon/intoption.hpp>
+#include <ulticon/callbackoption.hpp>
+
+#include <ulticon/stringargument.hpp>
+#include <ulticon/intargument.hpp>
 
 struct UserData
 {

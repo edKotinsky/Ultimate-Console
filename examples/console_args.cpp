@@ -1,12 +1,13 @@
-#include "callback.hpp"
-#include "interface.hpp"
-#include "option.hpp"
-#include "ucerr.hpp"
 #include <ios>
 #include <iostream>
 #include <string>
 
 #include <ulticon.hpp>
+
+#include <ulticon/stringoption.hpp>
+#include <ulticon/booloption.hpp>
+#include <ulticon/intoption.hpp>
+#include <ulticon/boolalphaoption.hpp>
 
 // example class
 struct ConsoleArgs

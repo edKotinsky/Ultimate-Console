@@ -50,7 +50,9 @@ configure_file (UCconfig.hpp.in ucconf.hpp)
 target_include_directories(UltimateConsole PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/include
-    ${CMAKE_CURRENT_BINARY_DIR})
+    ${CMAKE_CURRENT_BINARY_DIR}
+    INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/ulticon
+)
 
 target_compile_features (UltimateConsole PUBLIC cxx_std_17)
 

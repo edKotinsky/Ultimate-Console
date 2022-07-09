@@ -5,12 +5,14 @@
  * construction must ends with EOL ';', '\n' or EOF '\0' symbol.
  */
 
-#include "argument.hpp"
-#include "interface.hpp"
-#include "ucerr.hpp"
 #include <ostream>
-#include <ulticon.hpp>
 #include <iostream>
+
+#include <ulticon.hpp>
+
+#include <ulticon/intargument.hpp>
+#include <ulticon/stringargument.hpp>
+#include <ulticon/boolargument.hpp>
 
 int main(int, char**)
 {
