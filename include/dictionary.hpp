@@ -5,15 +5,9 @@
 
 #pragma once
 
-#include "command.hpp"
 #include "uccmd.hpp"
 #include "indata.hpp"
-#include "ucerr.hpp"
 #include "variable.hpp"
-
-#include <memory>
-#include <vector>
-#include <string>
 
 namespace UC
 {
