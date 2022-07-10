@@ -3,6 +3,8 @@
 
 #include <ulticon.hpp>
 
+#include <ulticon/printerror.hpp>
+
 #include <ulticon/stringoption.hpp>
 #include <ulticon/booloption.hpp>
 #include <ulticon/intoption.hpp>

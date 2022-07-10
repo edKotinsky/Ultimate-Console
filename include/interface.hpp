@@ -108,6 +108,4 @@ namespace UC
     dictionary_state run(dictionary_t& dictionary);
 
     component_error getError();
-
-    void printError(const component_error& error);
 } // namespace uc

@@ -10,6 +10,8 @@
 
 #include <ulticon.hpp>
 
+#include <ulticon/printerror.hpp>
+
 #include <ulticon/intargument.hpp>
 #include <ulticon/stringargument.hpp>
 #include <ulticon/boolargument.hpp>
