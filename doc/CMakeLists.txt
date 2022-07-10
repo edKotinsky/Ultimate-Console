@@ -8,7 +8,7 @@ if(DOXYGEN_FOUND)
     message("Documentation build started")
 
     if(NOT ULTICON_EXAMPLES)
-        set(NO_EXAMPLES_DOCUMENTATION "@CMAKE_CURRENT_SOURCE_DIR@/../examples")
+        set(NO_EXAMPLES_DOCUMENTATION ${CMAKE_CURRENT_SOURCE_DIR}/../examples)
     endif()
 
     add_custom_target(doc ALL 
