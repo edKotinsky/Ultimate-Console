@@ -1,3 +1,7 @@
+/**
+    @file lexer.hpp
+    @brief Lexic analyzer
+*/
 #pragma once
 
 #include <iostream>

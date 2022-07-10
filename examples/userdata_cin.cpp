@@ -1,5 +1,6 @@
-/*
-    This example demonstrates commands, options and arguments of
+/**
+    @file userdata_cin.cpp
+    @brief This example demonstrates commands, options and arguments of
     Ultimate Console
 */
 

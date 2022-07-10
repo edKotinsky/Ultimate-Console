@@ -1,3 +1,8 @@
+/**
+    @file dictionary.hpp
+    @brief Dictionary
+*/
+
 #pragma once
 
 #include "command.hpp"

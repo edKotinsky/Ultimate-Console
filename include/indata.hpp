@@ -1,3 +1,8 @@
+/**
+    @file indata.hpp
+    @brief Wrapper for std::istream and command-line arguments
+*/
+
 #pragma once
 
 #include <iostream>

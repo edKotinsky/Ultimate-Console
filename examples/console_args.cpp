@@ -1,5 +1,6 @@
-/*
-    In this example I show how to use Ultimate Console with 
+/**
+    @file console_args.cpp
+    @brief In this example I show how to use Ultimate Console with 
     with command-line arguments
 */
 

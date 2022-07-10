@@ -1,3 +1,8 @@
+/**
+    @file ucerr.hpp
+    @brief Header with component_error class and Ulticon error codes
+*/
+
 #pragma once
 
 #include <string>

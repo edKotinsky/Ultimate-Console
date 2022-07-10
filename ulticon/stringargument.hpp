@@ -1,3 +1,6 @@
+/**
+    @file stringargument.hpp
+*/
 #pragma once
 
 #include <include/argument.hpp>

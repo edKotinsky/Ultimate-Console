@@ -1,3 +1,7 @@
+/**
+    @file variable.hpp
+    @brief Variable
+*/
 #pragma once
 
 #include "argument.hpp"

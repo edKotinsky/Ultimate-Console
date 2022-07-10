@@ -1,3 +1,6 @@
+/**
+    @file boolalphaoption.hpp
+*/
 #pragma once
 
 #include <include/option.hpp>

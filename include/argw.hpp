@@ -1,3 +1,7 @@
+/**
+    @file argw.hpp
+    @brief Wrapper for command-line arguments int argc, char** argv
+*/
 #pragma once
 
 #include <string>

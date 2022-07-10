@@ -1,3 +1,6 @@
+/**
+    @file printerror.hpp
+*/
 #pragma once
 
 #include <include/ucerr.hpp>

@@ -1,3 +1,8 @@
+/**
+    @file synalyzer.hpp
+    @brief Syntax analyzer
+*/
+
 #pragma once
 
 #include <list>
@@ -37,7 +42,6 @@ namespace ucsyn
      * states of Finite State Machine.
      * Finite state names begins with _
      */
-    //
     enum state
     {
         initial = 0,

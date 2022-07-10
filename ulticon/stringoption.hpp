@@ -1,3 +1,6 @@
+/**
+    @file stringoption.hpp
+*/
 #pragma once
 
 #include <include/option.hpp>

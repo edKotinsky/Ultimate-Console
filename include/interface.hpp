@@ -1,3 +1,8 @@
+/**
+    @file interface.hpp
+    @brief The header for API
+*/
+
 #pragma once
 
 #include "argument.hpp"
@@ -162,5 +167,5 @@ namespace UC
     */
     dictionary_state run(dictionary_t& dictionary);
 
-    component_error getError();
+    // component_error getError();
 } // namespace uc

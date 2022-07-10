@@ -1,3 +1,8 @@
+/**
+    @file option.hpp
+    @brief header with Option base class definition
+*/
+
 #pragma once
 
 #include <memory>

@@ -1,4 +1,6 @@
-/*
+/**
+ * @file variables.cpp
+ * @brief variables demonstration
  * This example demonstrates Ultimate Console variables
  * Variable contain three syntax components: name of a variable,
  * equality symbol and a value: variable = value; and this

@@ -1,3 +1,6 @@
+/**
+    @file boolargument.hpp
+*/
 #pragma once
 
 #include <include/argument.hpp>

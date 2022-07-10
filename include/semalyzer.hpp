@@ -1,3 +1,7 @@
+/**
+    @file semalyzer.hpp
+    @brief Semantic analyzer
+*/
 #pragma once
 
 #include "uccmd.hpp"
@@ -13,17 +17,6 @@ namespace ucsem
      * Enum action provides types of actions for
      * semantic analyzer.
      */
-    // enum class action
-    // {
-    //     command = 0,
-    //     argument = 1,
-    //     key  = 2,
-    //     option = 3,
-    //     assign_value = 4,
-    //     EOL = 5,
-    //     no_act = -1
-    // };
-
     enum state
     {
         initial = 0,

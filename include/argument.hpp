@@ -1,3 +1,8 @@
+/**
+    @file argument.hpp
+    @brief Argument base class
+*/
+
 #pragma once
 
 #include <memory>

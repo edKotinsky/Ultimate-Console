@@ -1,3 +1,8 @@
+/**
+    @file callback.hpp
+    @brief Callback function wrappers header
+*/
+
 #pragma once
 
 namespace UC
