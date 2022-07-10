@@ -5,13 +5,23 @@
  * construction must ends with EOL ';', '\n' or EOF '\0' symbol.
  */
 
-#include <ostream>
 #include <iostream>
 
 #include <ulticon.hpp>
 
+/*
+    Include optional headers of ultimate console. You can not
+    include them, if you don't wanna use classes and functions,
+    which them provide.
+*/
+
+// void printError(const UC::component_error &e)
 #include <ulticon/printerror.hpp>
 
+/*
+    if you want to use variables, you need include arguments
+    with types, which you gonna use.
+*/
 #include <ulticon/intargument.hpp>
 #include <ulticon/stringargument.hpp>
 #include <ulticon/boolargument.hpp>

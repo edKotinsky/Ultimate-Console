@@ -1,18 +1,34 @@
+/*
+    This example demonstrates commands, options and arguments of
+    Ultimate Console
+*/
+
 #include <iostream>
 #include <memory>
 
 #include <ulticon.hpp>
 
+/*
+    Include optional headers of ultimate console. You can not
+    include them, if you don't wanna use classes and functions,
+    which them provide.
+*/
+
+// void printError(const UC::component_error &e)
 #include <ulticon/printerror.hpp>
 
+// options
 #include <ulticon/stringoption.hpp>
 #include <ulticon/booloption.hpp>
 #include <ulticon/intoption.hpp>
 #include <ulticon/callbackoption.hpp>
 
+// arguments
 #include <ulticon/stringargument.hpp>
 #include <ulticon/intargument.hpp>
+//#include <ulticon/boolargument.hpp>
 
+// example class
 struct UserData
 {
     void printUserData()

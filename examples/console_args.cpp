@@ -1,11 +1,23 @@
-#include <ios>
+/*
+    In this example I show how to use Ultimate Console with 
+    with command-line arguments
+*/
+
 #include <iostream>
 #include <string>
 
 #include <ulticon.hpp>
 
+/*
+    Include optional headers of ultimate console. You can not
+    include them, if you don't wanna use classes and functions,
+    which them provide.
+*/
+
+// void printError(const UC::component_error &e)
 #include <ulticon/printerror.hpp>
 
+// options
 #include <ulticon/stringoption.hpp>
 #include <ulticon/booloption.hpp>
 #include <ulticon/intoption.hpp>
@@ -42,7 +54,7 @@ int main(int argc, char** argv)
         // first of all create dictionary
         UC::dictionary_t dict = UC::createDictionary();
 
-        // specify the input; in this example we're gonna get data from console args
+        // specify the input; in this example we're gonna get data from command-line args
         UC::setInput(dict, argc, argv);
 
         // create the command with name "userdata" and attach it to dictionary
