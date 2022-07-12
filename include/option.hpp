@@ -57,13 +57,19 @@ namespace UC
             @brief returns key name of an option
             @return one character key name
         */
-        virtual char getShortName() = 0;
+        char getShortName()
+        {
+            return sName;
+        }
 
         /**
             @brief returns name of an option
             @return long std::string name
         */
-        virtual const std::string &getLongName() = 0;
+        const std::string &getLongName()
+        {
+            return lName;
+        }
 
         /**
             @brief this function is necessary for internal logic

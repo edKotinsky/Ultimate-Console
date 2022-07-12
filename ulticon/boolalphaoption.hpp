@@ -30,17 +30,8 @@ namespace UC
             : Option(longName, '\0', true, no_key), 
             val(refToValue), trueStr(stringTrue), falseStr(stringFalse) {}
 
-        virtual char getShortName() override final
-        {
-            return sName;
-        }
-
-        virtual const std::string &getLongName() override final
-        {
-            return lName;
-        }
-
-        virtual void execute([[maybe_unused]] std::string &&value) override final
+        virtual void 
+        execute([[maybe_unused]] std::string &&value) override final
         {
             if (value == trueStr)
                 val = true;

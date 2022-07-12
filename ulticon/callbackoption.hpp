@@ -28,18 +28,6 @@ namespace UC
 
         ~CallbackOption() = default;
 
-        virtual char 
-        getShortName() override final
-        {
-            return sName;
-        }
-
-        virtual const std::string&
-        getLongName() override final
-        {
-            return lName;
-        }
-
         virtual void 
         execute([[maybe_unused]] std::string &&value) override final
         {
