@@ -196,4 +196,11 @@ namespace UC
         return [f, &args...]() -> void
         { (*f)(args...); };
     }
+
+    template <typename... Args>
+    auto callback(void (*f)(Args const&...args), Args &...args)
+    {
+        return [f, &args...]() -> void
+        { (*f)(args...); };
+    }
 } // namespace uc
