@@ -18,7 +18,8 @@ namespace UC
     /**
         @brief Command class
 
-        Command contains the command name and lists of the options and the arguments
+        Command contains the command name and 
+        lists of the options and the arguments
     */
 
     class Command
@@ -30,45 +31,21 @@ namespace UC
         inline void addArgument(Argument &arg)
         {
             #ifdef UC_DEBUG
-                std::cerr << "debug: command:addArgument(Argument&)" << std::endl;
+                std::cerr << 
+                    "debug: command:addArgument(Argument&)" << std::endl;
             #endif
 
             argvec.emplace_back(&arg);
         }
 
-        inline void addArgument(std::shared_ptr<Argument> arguptr)
+        inline void addArgument(std::shared_ptr<Argument> argsptr)
         {
-            argvec.push_back(std::move(arguptr));
+            argvec.push_back(std::move(argsptr));
         }
 
-        void addOption(Option &opt)
-        {
+        void addOption(Option &opt);
 
-            #ifdef UC_DEBUG
-                std::cerr << "debug: command:addOption(Option&): "
-                    << opt.getLongName() << " : "
-                    << opt.getShortName() << std::endl;
-            #endif
-
-            char sname = opt.getShortName();
-            if (sname)
-                sNameVec.push_back(sname);
-            optvec.emplace_back(&opt);
-        }
-
-        void addOption(std::shared_ptr<Option> optuptr)
-        {
-            #ifdef UC_DEBUG
-                std::cerr << 
-                    "debug: command:addOption(std::shared_ptr<Option>): "
-                    << optuptr->getLongName() << " : "
-                    << optuptr->getShortName() << std::endl;
-            #endif
-            char sname = optuptr->getShortName();
-            if (sname)
-                sNameVec.push_back(sname);
-            optvec.push_back(std::move(optuptr));
-        }
+        void addOption(std::shared_ptr<Option> optsptr);
 
         inline const std::string &getName()
         {
@@ -88,8 +65,9 @@ namespace UC
             argIt = argvec.begin();
         }
 
-        inline void setOptionValue(std::vector<std::shared_ptr<Option>>::iterator optionIt,
-                            std::string &&value)
+        inline void setOptionValue
+        (std::vector<std::shared_ptr<Option>>::iterator optionIt, 
+        std::string &&value)
         {
             (*optionIt)->execute(std::move(value));
         }
@@ -114,6 +92,4 @@ namespace UC
         std::vector<char> sNameVec;
         std::vector<std::shared_ptr<Option>> optvec;
     };
-
-
 } // namespace uc

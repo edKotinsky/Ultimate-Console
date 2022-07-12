@@ -19,8 +19,8 @@ namespace UC
     const std::vector<std::shared_ptr<Option>>::iterator 
     Command::findOptionShortName(std::string const &name)
     {
-        std::vector<char>::iterator it = sNameVec.begin();
-        std::vector<std::shared_ptr<Option>>::iterator optvecit = optvec.begin();
+        auto it = sNameVec.begin();
+        auto optvecit = optvec.begin();
 
         while (it != sNameVec.end())
         {
@@ -36,13 +36,13 @@ namespace UC
             it++;    
         }
         throw UC::component_error
-                (UC::error_code::cmd_key_does_not_exist, name);
+            (UC::error_code::cmd_key_does_not_exist, name);
     }
 
     const std::vector<std::shared_ptr<Option>>::iterator 
     Command::findOptionLongName(std::string const &name)
     {
-        std::vector<std::shared_ptr<Option>>::iterator it = optvec.begin();
+        auto it = optvec.begin();
 
         while (it != optvec.end())
         {
@@ -51,7 +51,7 @@ namespace UC
             it++;
         }
         throw UC::component_error
-                (UC::error_code::cmd_option_does_not_exist, name);
+            (UC::error_code::cmd_option_does_not_exist, name);
     }
 
     void Command::setArgumentValue(std::string &&value)
@@ -61,6 +61,35 @@ namespace UC
                     (UC::error_code::cmd_too_many_args);
         argvec[argCounter]->execute(std::move(value));
         argCounter++;
+    }
+
+    void Command::addOption(Option &opt)
+    {
+        #ifdef UC_DEBUG
+            std::cerr << "debug: command:addOption(Option&): "
+                << opt.getLongName() << " : "
+                << opt.getShortName() << std::endl;
+        #endif
+
+        char sname = opt.getShortName();
+        if (sname)
+            sNameVec.push_back(sname);
+        optvec.emplace_back(&opt);
+    }
+
+    void Command::addOption(std::shared_ptr<Option> optsptr)
+    {
+        #ifdef UC_DEBUG
+            std::cerr << 
+                "debug: command:addOption(std::shared_ptr<Option>): "
+                << optsptr->getLongName() << " : "
+                << optsptr->getShortName() << std::endl;
+        #endif
+
+        char sname = optsptr->getShortName();
+        if (sname)
+            sNameVec.push_back(sname);
+        optvec.push_back(std::move(optsptr));
     }
 
 } // namespace cmd

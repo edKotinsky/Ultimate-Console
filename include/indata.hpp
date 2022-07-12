@@ -21,8 +21,9 @@ namespace UC
         ~input_data() = default;
 
         input_data(const input_data&) = delete;
-
         input_data(input_data&&) = default;
+        input_data& operator=(input_data const&) = delete;
+        input_data& operator=(input_data&&) = delete;
 
         void get(char &ch);
         int peek();

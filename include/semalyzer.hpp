@@ -13,10 +13,6 @@ namespace ucsem
     const int states[2][6] = {{  1, -1, -1, -1, -1, -5},
                               { -7, -4, -2, -3, -6, -5}};
 
-    /*
-     * Enum action provides types of actions for
-     * semantic analyzer.
-     */
     enum state
     {
         initial = 0,
