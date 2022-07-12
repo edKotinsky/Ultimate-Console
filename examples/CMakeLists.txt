@@ -38,3 +38,7 @@ target_link_libraries(variables ulticon)
 project(args)
 add_executable(args console_args.cpp)
 target_link_libraries(args ulticon)
+
+project(creating_option)
+add_executable(creating_option creating_option.cpp)
+target_link_libraries(creating_option ulticon)
