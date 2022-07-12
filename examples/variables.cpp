@@ -54,6 +54,8 @@ int main(int, char**)
             // or you can pass an rvalue straightaway
             UC::addVariable(dictionary, "exit", UC::BoolArgument(exit));
 
+            std::cout << "Enter the command: ";
+
             // this is the main function - it gets data from input source, disassemblies it
             // finds names in lists and executes it
             UC::run(dictionary);

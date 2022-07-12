@@ -115,6 +115,7 @@ int main(int, char**)
         UC::addArgument(comd, UC::StringArgument(ud.strArg));
         UC::addArgument(comd, UC::IntArgument(ud.intArg));
 
+        cout << "Enter the command: ";
         // this is the main function - it gets data from input source, disassemblies it
         // finds names in lists and executes it
         UC::run(d0);
