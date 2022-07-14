@@ -90,7 +90,7 @@ struct HelpOption : UC::Option
     }
 };
 
-void printWords(std::list<std::string> &words, HelpOption &opt)
+void printWords(strl_t &words, HelpOption &opt)
 {
     for (auto it : words)
         std::cout << it << " ";
@@ -102,7 +102,7 @@ void printWords(std::list<std::string> &words, HelpOption &opt)
 
 int main(int argc, char** argv)
 {
-    std::list<std::string> words;
+    strl_t words;
 
     try
     {
