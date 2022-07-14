@@ -3,6 +3,7 @@
 */
 #pragma once
 
+#include "ucerr.hpp"
 #include <include/option.hpp>
 
 namespace UC
@@ -27,6 +28,10 @@ namespace UC
 
         virtual void execute([[maybe_unused]] std::string &&value) override final
         {
+            for (auto it : value)
+                if (it < '0' || it > '9')
+                    throw UC::component_error
+                        (error_code::opt_int_val_not_numeral, value);
             val = std::stoi(value, nullptr);
         }
 

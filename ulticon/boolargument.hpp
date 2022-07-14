@@ -3,6 +3,7 @@
 */
 #pragma once
 
+#include "ucerr.hpp"
 #include <include/argument.hpp>
 
 namespace UC
@@ -63,7 +64,8 @@ namespace UC
         {
             if (value == trueStr) ref = true;
             else if (value == falseStr) ref = false;
-            else throw std::runtime_error("BoolArgument: value is not bool"); 
+            else throw UC::component_error
+                (error_code::arg_bool_string, value); 
         }
         
     private:

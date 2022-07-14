@@ -144,8 +144,7 @@ namespace ucsem
                 break;
 
             case state::_er_dcmd:
-                throw UC::component_error
-                    (UC::error_code::sem_command_got_twice);
+                throw std::logic_error("Invalid state: second command given");
             }
             tokenIt++;
         }

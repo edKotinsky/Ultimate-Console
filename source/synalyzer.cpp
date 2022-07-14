@@ -17,7 +17,7 @@ namespace ucsyn
         while (!exit)
         {
             if (it == lexems.end())
-                throw UC::component_error(UC::error_code::syn_missing_eol);
+                throw UC::component_error(UC::error_code::syn_missed_eol);
             lexem = std::move(*it);
             ev = eventKind(lexem);
             if (st < 0)
@@ -69,7 +69,7 @@ namespace ucsyn
                 break;
 
             case state::_err_val_req:
-                throw UC::component_error(UC::error_code::syn_missing_value);
+                throw UC::component_error(UC::error_code::syn_missed_value);
 
             case state::_exit:
                 act = action::EOL;

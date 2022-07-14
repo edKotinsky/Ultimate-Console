@@ -3,6 +3,7 @@
 */
 #pragma once
 
+#include "ucerr.hpp"
 #include <include/argument.hpp>
 
 namespace UC
@@ -44,7 +45,8 @@ namespace UC
         {
             for (auto it : value)
                 if (it < '0' || it > '9')
-                    throw std::runtime_error("IntArgument: value is not a number");
+                    throw UC::component_error
+                        (error_code::arg_int_val_not_numeral, value);
 
             ref = std::stoi(value, nullptr);
         }

@@ -3,6 +3,7 @@
 */
 #pragma once
 
+#include "ucerr.hpp"
 #include <include/option.hpp>
 
 namespace UC
@@ -38,7 +39,8 @@ namespace UC
             else if (value == falseStr)
                 val = false;
             else 
-                throw std::runtime_error("String given to BoolalphaOption is not a bool value");
+                throw UC::component_error
+                    (error_code::opt_boola_string, value);
         }
 
         virtual std::shared_ptr<Option> clone() const override
