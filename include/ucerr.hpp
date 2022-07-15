@@ -5,7 +5,9 @@
 
 #pragma once
 
+#include "trace.hpp"
 #include <string>
+#include <uctrace.hpp>
 
 namespace UC
 {
@@ -84,12 +86,24 @@ namespace UC
     {
     public:
         component_error(error_t errorCode, std::string wrongSequence)
-            : _code(errorCode), _sequence(wrongSequence) {}
+            : _code(errorCode), _sequence(wrongSequence) 
+            {
+                UC::tprintf("component_error instance called: \
+code % what %\n", errorCode, wrongSequence);
+            }
         component_error(error_t errorCode, char wrongCharacter)
-            : _code(errorCode), _sequence(1, wrongCharacter) {}
+            : _code(errorCode), _sequence(1, wrongCharacter) 
+            {
+                UC::tprintf("component_error instance called: \
+code % what %\n", errorCode, wrongCharacter);
+            }
 
         component_error(error_t errorCode)
-            : _code(errorCode), _sequence() {}
+            : _code(errorCode), _sequence() 
+            {
+                UC::tprintf("component_error instance called: \
+code %\n", errorCode);
+            }
 
         component_error() = delete;
         ~component_error() = default;

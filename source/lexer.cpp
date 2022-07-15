@@ -1,6 +1,6 @@
 #include "lexer.hpp"
+#include "trace.hpp"
 #include "ucerr.hpp"
-#include <ucconf.hpp>
 
 namespace uclex
 {
@@ -38,10 +38,9 @@ namespace uclex
             ev = charType(ch);
             st = getState(st, ev);
 
-            #ifdef LEX_DEBUG
-                std::cerr << "ch=" << ch
-                            << " ev=" << static_cast<int>(ev)
-                            << " st=" << static_cast<int>(st) << std::endl;
+            #ifdef UC_TRACE
+                UC::tprintf("uclex::parce: ch = % ev = % st = %\n", 
+                ch, static_cast<int>(ev),static_cast<int>(st));
             #endif
 
             switch (st)
@@ -113,7 +112,7 @@ namespace uclex
 
 #ifdef LEX_DEBUG
             if (!lexList.empty() && st != prevst)
-                std::cerr << "vector element=" << lexList.back() << std::endl;
+                UC::tprintf("uclex::parse: lexem = %\n", lexList.back());
 #endif
 
             if (error != 0)

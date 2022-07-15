@@ -7,7 +7,7 @@
 #include <vector>
 #include <functional>
 
-#include "ucconf.hpp"
+#include <uctrace.hpp>
 #include "argument.hpp"
 #include "option.hpp"
 
@@ -30,9 +30,8 @@ namespace UC
 
         inline void addArgument(Argument &arg)
         {
-            #ifdef UC_DEBUG
-                std::cerr << 
-                    "debug: command:addArgument(Argument&)" << std::endl;
+            #ifdef UC_TRACE
+                UC::tprintf("Command::addArgument");
             #endif
 
             argvec.emplace_back(&arg);

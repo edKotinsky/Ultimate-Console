@@ -1,7 +1,6 @@
 #include <memory>
 #include <stdexcept>
 
-#include <ucconf.hpp>
 #include "dictionary.hpp"
 #include "interface.hpp"
 #include "variable.hpp"
@@ -10,6 +9,7 @@ namespace UC
 {
     dictionary_t createDictionary()
     {
+        INIT_TRACE();
         return std::make_unique<Dictionary>();
     }
 

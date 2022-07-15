@@ -1,0 +1,8 @@
+#pragma once
+
+#cmakedefine ULTICON_TRACE
+
+#ifdef ULTICON_TRACE
+    #define UC_TRACE
+    #include <trace.hpp>
+#endif

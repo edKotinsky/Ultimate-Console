@@ -39,7 +39,6 @@ struct UserData
         cout << endl;
         cout << "Print Userdata values" << endl;
         cout << "This is the test class made for ulticon library demonstration" << endl;
-        cout << "Ultimate Console v" << ULTICON_VERSION << endl;
 
         cout << endl;
         cout << "strValue  = " << strValue << endl;
@@ -62,7 +61,6 @@ struct UserData
         cout << endl;
         cout << "Using: userdata [ key [key value] ] [ option = [option value] ] [args...]" << endl;
         cout << "This is the test command userdata for ulticon library demonstration" << endl;
-        cout << "Ultimate Console v" << ULTICON_VERSION << endl;
 
         cout << endl;
         cout << "Arguments required by options, required by corresponding keys too." << endl;

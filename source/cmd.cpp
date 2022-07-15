@@ -1,6 +1,6 @@
+#include <uctrace.hpp>
 #include <uccmd.hpp>
-#include "ulticon.hpp"
-#include "ucconf.hpp"
+
 #include <ios>
 #include <memory>
 
@@ -24,11 +24,9 @@ namespace UC
 
         while (it != sNameVec.end())
         {
-            #ifdef UC_DEBUG
-                std::cout << "debug: findOptionShortName:name: " 
-                    << name << std::endl;
-                std::cout << "debug: findOptionShortName:it:   " 
-                    << *it << std::endl;
+            #ifdef UC_TRACE
+                UC::tprintf("Command::findOptionShortName: \
+name: % it: %\n", name, *it);
             #endif
 
             if (*it == name[0]) return optvecit;
@@ -65,10 +63,9 @@ namespace UC
 
     void Command::addOption(Option &opt)
     {
-        #ifdef UC_DEBUG
-            std::cerr << "debug: command:addOption(Option&): "
-                << opt.getLongName() << " : "
-                << opt.getShortName() << std::endl;
+        #ifdef UC_TRACE
+            UC::tprintf("Command::addOption(Option &opt): % %\n", 
+                opt.getLongName(), opt.getShortName());
         #endif
 
         char sname = opt.getShortName();
@@ -79,11 +76,10 @@ namespace UC
 
     void Command::addOption(std::shared_ptr<Option> optsptr)
     {
-        #ifdef UC_DEBUG
-            std::cerr << 
-                "debug: command:addOption(std::shared_ptr<Option>): "
-                << optsptr->getLongName() << " : "
-                << optsptr->getShortName() << std::endl;
+        #ifdef UC_TRACE
+            UC::tprintf("Command::addOption(std::shared_ptr\
+<Option> optsptr): % %\n", optsptr->getLongName(), 
+            optsptr->getShortName());
         #endif
 
         char sname = optsptr->getShortName();

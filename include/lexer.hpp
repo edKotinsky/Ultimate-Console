@@ -8,8 +8,6 @@
 #include <string>
 #include <list>
 
-#include <ucconf.hpp>
-
 #include "indata.hpp"
 
 namespace uclex

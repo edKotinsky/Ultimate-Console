@@ -6,3 +6,4 @@ build
 *.zip
 doxygen.conf
 !doxygen.conf.in
+trace.log
