@@ -1,11 +1,14 @@
+/**
+    @file trace.hpp
+
+    @brief tprintf
+*/
 #pragma once
 
 #include <fstream>
 
 #if defined (UC_TRACE) || defined (ULTICON_TRACE)
     #define INIT_TRACE UC::TRACE::init_trace
-#else
-    #define INIT_TRACE // nothing
 #endif
 
 namespace UC::TRACE
@@ -41,6 +44,19 @@ namespace UC::TRACE
 
 namespace UC
 {
+    /**
+        @brief tprintf prints debug info to trace.log
+
+        Character '%' in explanation string is replaced by 
+        corresponding argument. If after first persent goes second
+        persent, function prints one persent symbol into trace.log.
+        If single persent symbols more than arguments, function
+        will throw an exception. If number of arguments is more 
+        than persents, too.
+
+        @param[in] str is an explanation string
+        @param[in] args variable number of arguments
+    */
     template<typename... Args>
     void tprintf(const char* str, Args... args)
     {

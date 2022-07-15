@@ -5,7 +5,6 @@
 
 #pragma once
 
-#include "trace.hpp"
 #include <string>
 #include <uctrace.hpp>
 
@@ -88,21 +87,27 @@ namespace UC
         component_error(error_t errorCode, std::string wrongSequence)
             : _code(errorCode), _sequence(wrongSequence) 
             {
+                #ifdef UC_TRACE
                 UC::tprintf("component_error instance called: \
 code % what %\n", errorCode, wrongSequence);
+                #endif
             }
         component_error(error_t errorCode, char wrongCharacter)
             : _code(errorCode), _sequence(1, wrongCharacter) 
             {
+                #ifdef UC_TRACE
                 UC::tprintf("component_error instance called: \
 code % what %\n", errorCode, wrongCharacter);
+                #endif
             }
 
         component_error(error_t errorCode)
             : _code(errorCode), _sequence() 
             {
+                #ifdef UC_TRACE
                 UC::tprintf("component_error instance called: \
 code %\n", errorCode);
+                #endif
             }
 
         component_error() = delete;

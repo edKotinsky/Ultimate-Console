@@ -5,4 +5,6 @@
 #ifdef ULTICON_TRACE
     #define UC_TRACE
     #include <trace.hpp>
+#else
+    #define INIT_TRACE() // nothing
 #endif

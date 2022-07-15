@@ -1,5 +1,5 @@
 #include "lexer.hpp"
-#include "trace.hpp"
+#include <uctrace.hpp>
 #include "ucerr.hpp"
 
 namespace uclex
