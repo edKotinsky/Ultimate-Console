@@ -54,6 +54,20 @@ int main(int, char**)
             // or you can pass an rvalue straightaway
             UC::addVariable(dictionary, "exit", UC::BoolArgument(exit));
 
+            std::cout << "Ultimate Console example: Variables" 
+                      << std::endl;
+            std::cout << std::endl;
+            std::cout << "Possible variables: int-value, "
+                      << "string-value, exit" 
+                      << std::endl;
+            std::cout << "int-value requires integer string, "
+                      << "string-value requires string, exit "
+                         "requires bool string (true/false)" 
+                      << std::endl;
+            std::cout << "Syntax: variable-name = value <EOL>" 
+                      << std::endl;
+            std::cout << std::endl;
+
             std::cout << "Enter the command: ";
 
             // this is the main function - it gets data from input source, disassemblies it

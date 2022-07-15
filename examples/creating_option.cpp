@@ -100,7 +100,7 @@ void printWords(strl_t &words, HelpOption &opt)
         opt.execute();
 }
 
-int main(int argc, char** argv)
+int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 {
     strl_t words;
 
@@ -123,6 +123,22 @@ int main(int argc, char** argv)
 
         UC::addOption(print, StringListOption("word", 'w', words));
         UC::addOption(print, help);
+
+        std::cout << "Ultimate Console example: User's Option" 
+                  << std::endl;
+        std::cout << std::endl;
+        std::cout << "Commands: print" 
+                  << std::endl;
+        std::cout << "Options: word(w), help" 
+                  << std::endl;
+        std::cout << std::endl;
+        std::cout << "Usage: command [option]" 
+                  << std::endl;
+        std::cout << " -w, --word=VALUE word to be printed" 
+                  << std::endl;
+        std::cout << "     --help       print help and terminate" 
+                  << std::endl;
+        std::cout << std::endl;
 
         std::cout << "> ";
 

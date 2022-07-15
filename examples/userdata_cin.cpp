@@ -113,6 +113,17 @@ int main(int, char**)
         UC::addArgument(comd, UC::StringArgument(ud.strArg));
         UC::addArgument(comd, UC::IntArgument(ud.intArg));
 
+        std::cout << "Ultimate Console example: Userdata" << std::endl;
+        std::cout << std::endl;
+        std::cout << "Usage: userdata [OPTION]... [STRING ARGUMENT]"
+                     " [INT ARGUMENT]" 
+                  << std::endl;
+        std::cout << " -s, --string=VAL" << std::endl;
+        std::cout << " -i, --int=VAL"    << std::endl;
+        std::cout << " -b, --bool"       << std::endl;
+        std::cout << " -h, --help"       << std::endl;
+        std::cout << std::endl;
+
         cout << "Enter the command: ";
         // this is the main function - it gets data from input source, disassemblies it
         // finds names in lists and executes it
