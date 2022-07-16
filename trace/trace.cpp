@@ -9,9 +9,8 @@ namespace UC::TRACE
     
     void init_trace()
     {
-        TRACE::trace.open("trace.log");
         if (!TRACE::trace.is_open())
-            throw std::runtime_error("trace: file is not opened");
+            TRACE::trace.open("trace.log");
     }
 
     void prnt(const char*str, size_t& i)
