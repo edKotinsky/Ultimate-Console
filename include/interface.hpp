@@ -190,17 +190,12 @@ namespace UC
         @return pointer to a void(void) type function
     */
 
-    template <typename... Args>
-    auto callback(void (*f)(Args &...args), Args &...args)
+    template<typename Func, typename... Args>
+    auto callback(Func f, Args&&... args)
     {
         return [f, &args...]() -> void
-        { (*f)(args...); };
-    }
-
-    template <typename... Args>
-    auto callback(void (*f)(Args const&...args), Args &...args)
-    {
-        return [f, &args...]() -> void
-        { (*f)(args...); };
+        {
+            f(std::forward<Args>(args)...);
+        };
     }
 } // namespace uc
