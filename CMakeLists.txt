@@ -28,6 +28,11 @@ option(ULTICON_DOC "Enable documentation generating" OFF)
 option(ULTICON_WARNS_INTO_ERRS "Turn all warnings into errors" OFF)
 option(ULTICON_TRACE "Enable trace messages into file" OFF)
 
+if (CMAKE_CURRENT_BINARY_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+    message(FATAL_ERROR "In-tree build attempt detected. Set build
+dir outside source dir, delete CMakeCache.txt and try again.")
+endif()
+
 if (ULTICON_TRACE)
     message (STATUS "Ultimate Console: Trace")
     
