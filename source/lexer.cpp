@@ -29,7 +29,7 @@ namespace uclex
         bool exit = false;
         std::string lexem;
         std::list<std::string> lexList;
-        error_t error = 0;
+        UC::error_t error = 0;
 
         while (!exit)
         {
